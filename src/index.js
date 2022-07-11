@@ -1,5 +1,5 @@
 import './assets/style.css';
-import loadPage from './modules/skeleton';
+import {loadPage} from './modules/skeleton';
 
 loadPage();
 

@@ -38,10 +38,25 @@ function createNav() {
     }
 }
 
-const loadPage = () => {
-    const content = document.querySelector('.content');
-
-    content.appendChild(createHeader());
+function createFooter() {
+    const footer = document.createElement('footer');
+    footer.appendChild(createParagraph('text', ['para','para-small']));
+    return footer;
 }
 
-export default loadPage;
+const createParagraph = (text, [...classList]) => {
+    const para = document.createElement('p');
+    para.textContent = text;
+    classList.forEach(elem => para.classList.add(elem));
+
+    return para
+}
+
+const loadPage = () => {
+    const body = document.querySelector('body');
+    const content = document.querySelector('.content');
+    body.insertBefore(createHeader(), content);
+    body.appendChild(createFooter());
+}
+
+export {loadPage};

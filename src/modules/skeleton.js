@@ -48,8 +48,14 @@ const createParagraph = (text, [...classList]) => {
     const para = document.createElement('p');
     para.textContent = text;
     classList.forEach(elem => para.classList.add(elem));
-
     return para
+}
+
+const createWrapper = ([...classList]) => {
+    const wrapper = document.createElement('div');
+    wrapper.textContent = text;
+    classList.forEach(elem => wrapper.classList.add(elem));
+    return wrapper
 }
 
 const loadPage = () => {
@@ -59,4 +65,4 @@ const loadPage = () => {
     body.appendChild(createFooter());
 }
 
-export {loadPage};
+export {loadPage, createParagraph};

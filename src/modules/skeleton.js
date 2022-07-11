@@ -2,12 +2,9 @@ import Logo from '../assets/logo.png';
 
 function createHeader() {
     const header = document.createElement('header');
-    const logo = new Image();
-    logo.src = Logo;
-    logo.classList.add('logo');
+    const logo = createLogo(['logo']);
 
-    header.appendChild(logo);
-    header.appendChild(createNav());
+    header.append(logo, createNav());
     return header;
 }
 
@@ -16,9 +13,7 @@ function createNav() {
     const list = document.createElement('ul')
     navBar.classList.add('menu');
     
-    list.appendChild(createNavLink('Home', '#'));
-    list.appendChild(createNavLink('Menu', '#'));
-    list.appendChild(createNavLink('Contact', '#'));
+    list.append(createNavLink('Home', '#'), createNavLink('Menu', '#'), createNavLink('Contact', '#'));
 
     navBar.appendChild(list);
     return navBar;
@@ -40,7 +35,34 @@ function createNav() {
 
 function createFooter() {
     const footer = document.createElement('footer');
-    footer.appendChild(createParagraph('text', ['para','para-small']));
+    const containerOne = createWrapper(['container']);
+    const containerTwo = createWrapper(['container']);
+    const containerThree = createWrapper(['container']);
+    const containerFour = createWrapper(['container']);
+    const logoFooter = createLogo(['logo', 'logo-footer']);
+
+    containerOne.appendChild(logoFooter);
+
+    containerTwo.append(
+        createParagraph('Sprouts restaurant', ['text-footer']),
+        createParagraph('371 7th Ave, New York, NY 10001', ['text-footer']),
+        createParagraph('United States of America', ['text-footer'])
+        );
+
+    containerThree.append(
+        createParagraph('Open:', ['text-footer']),
+        createParagraph('Monday till Sunday', ['text-footer']),
+        createParagraph('10:00am - 10:00pm', ['text-footer'])
+        );
+
+    containerFour.append(
+        createParagraph('Phone: 5567748843332', ['bold','text-footer']),
+        createParagraph('Email:', ['text-footer']),
+        createParagraph('example@gmail.com', ['bold', 'text-footer'])
+        );
+
+    footer.append(containerOne,containerTwo,containerThree,containerFour);
+
     return footer;
 }
 
@@ -53,9 +75,15 @@ const createParagraph = (text, [...classList]) => {
 
 const createWrapper = ([...classList]) => {
     const wrapper = document.createElement('div');
-    wrapper.textContent = text;
     classList.forEach(elem => wrapper.classList.add(elem));
     return wrapper
+}
+
+const createLogo = ([...classList]) => {
+    const logo = new Image();
+    logo.src = Logo;
+    classList.forEach(elem => logo.classList.add(elem));
+    return logo;
 }
 
 const loadPage = () => {
@@ -65,4 +93,4 @@ const loadPage = () => {
     body.appendChild(createFooter());
 }
 
-export {loadPage, createParagraph};
+export {loadPage, createParagraph, createWrapper, createLogo};

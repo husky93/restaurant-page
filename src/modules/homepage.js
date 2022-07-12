@@ -33,6 +33,7 @@ function createAboutSection() {
     const aboutImage = createImage(AboutImg, ['image']);
 
     about.classList.add('about');
+    about.classList.add('wrapper');
     heading.textContent = "About us";
 
     right.appendChild(aboutImage);
@@ -48,7 +49,8 @@ function createMenuSection() {
     const heading = document.createElement('h2');
     const button = createButton('Open menu', ['btn', 'btn--secondary']);
 
-    menu.classList.add('menu');
+    menu.classList.add('menu-section');
+    menu.classList.add('wrapper');
     icon.classList.add('material-symbols-outlined');
     icon.textContent = 'restaurant';
     heading.textContent = 'Menu';
@@ -64,6 +66,7 @@ function createInfoSection() {
     const rowTwo = createWrapper(['row']);
     const rowThree = createWrapper(['row']);
     const rowFour = createWrapper(['row']);
+    info.classList.add('wrapper');
     info.classList.add('info');
 
     rowOne.append(createCard('Elegant', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,\

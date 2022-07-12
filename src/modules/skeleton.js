@@ -46,6 +46,8 @@ function createFooter() {
 
     containerOne.appendChild(logoFooter);
 
+    footer.classList.add('wrapper');
+
     containerTwo.append(
         createParagraph('Sprouts restaurant', ['text-footer']),
         createParagraph('371 7th Ave, New York, NY 10001', ['text-footer']),

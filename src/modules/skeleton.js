@@ -15,12 +15,12 @@ function createNav() {
     const list = document.createElement('ul')
     navBar.classList.add('menu');
     
-    list.append(createNavLink('Home', '#', ['menu-item', 'active']), createNavLink('Menu', '#', ['menu-item']), createNavLink('Contact', '#', ['menu-item']));
+    list.append(createNavLink('Home', ['menu-item', 'active', 'link--homepage']), createNavLink('Menu', ['menu-item', 'link--menu']), createNavLink('Contact', ['menu-item', 'link--contact']));
 
     navBar.appendChild(list);
     return navBar;
 
-    function createNavLink(text, link, [...classes]) {
+    function createNavLink(text, [...classes]) {
         const navItem = document.createElement('li');
         const navLink = document.createElement('a');
 
@@ -29,7 +29,6 @@ function createNav() {
         classes.forEach(elem => navItem.classList.add(elem));
         
         navLink.textContent = text;
-        navLink.setAttribute('href', link);
 
         navItem.appendChild(navLink);
         return navItem;

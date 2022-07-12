@@ -194,6 +194,10 @@ header {
     width: 100%;
 }
 
+.menu-item {
+    cursor: pointer;
+}
+
 header.scrolled > .wrapper .logo--header {
     width: 120px;
 }

@@ -3,6 +3,7 @@ import InfoOne from '../assets/infoone.jpg';
 import InfoTwo from '../assets/infotwo.jpg';
 import InfoThree from '../assets/infothree.jpg';
 import InfoFour from '../assets/infofour.jpg';
+import HeroBg from '../assets/herobg.jpg';
 
 import {createParagraph, createWrapper, createLogo, createButton, createImage, createCard} from './skeleton';
 
@@ -13,6 +14,7 @@ function createHeroSection() {
     const button = createButton('MENU', ['btn', 'btn--primary']);
 
     hero.classList.add('hero');
+    hero.style.backgroundImage = `url(${HeroBg})`;
     heading.textContent = "Traditional Polish Cuisine";
 
     hero.append(logo, heading, button);

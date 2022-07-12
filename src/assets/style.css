@@ -2,7 +2,9 @@
 
 :root {
     --bg-color: #F2F2F2;
-    --primary-color: coral;
+    --primary-color: #B0FF7E;
+    --primary-color-hover: #9DE670;
+    --primary-color-active: #83BF5E;
 }
 
 * {

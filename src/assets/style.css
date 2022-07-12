@@ -61,22 +61,33 @@ h1 {
     background-color: var(--primary-color-active);
 }
 
+.wrapper {
+    max-width: 1286px;
+    margin: 0 auto;
+}
+
 
 
 /* Header */
 
 header {
+    background-color: transparent;
     position: fixed;
     width: 100vw;
     top: 0;
+    padding: 24px 48px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header--wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 48px;
 }
 
 .logo--header{
     width: 200px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu ul {
@@ -108,6 +119,16 @@ header {
 
 .menu-item.active > .menu-link::after, .menu-item:hover > .menu-link::after {
     width: 100%;
+}
+
+header.scrolled > .wrapper .logo--header {
+    width: 120px;
+}
+
+header.scrolled {
+    background-color: rgba(36,37,38, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 24px 48px;
 }
 
 /* Hero section */

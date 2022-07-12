@@ -3,8 +3,10 @@ import Logo from '../assets/logo.png';
 function createHeader() {
     const header = document.createElement('header');
     const logo = createLogo(['logo', 'logo--header']);
+    const wrapper = createWrapper(['wrapper', 'header--wrapper'])
+    wrapper.append(logo, createNav());
 
-    header.append(logo, createNav());
+    header.appendChild(wrapper);
     return header;
 }
 
@@ -118,8 +120,18 @@ const createCard = (heading, text) => {
 const loadPage = () => {
     const body = document.querySelector('body');
     const content = document.querySelector('.content');
-    body.insertBefore(createHeader(), content);
+    const header = createHeader();
+    body.insertBefore(header, content);
     body.appendChild(createFooter());
+
+    window.addEventListener('scroll', () => {
+        let doc = document.documentElement;        
+        if (doc.scrollTop === 0) {
+            header.classList.remove('scrolled');
+        } else if (doc.scrollTop > 0 && !header.classList.contains('scrolled')) {
+            header.classList.add('scrolled');
+        }
+    })
 }
 
 export {loadPage, createParagraph, createWrapper, createLogo, createButton, createImage, createCard};

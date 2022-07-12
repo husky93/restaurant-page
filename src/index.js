@@ -1,3 +1,4 @@
+import './assets/reset.css';
 import './assets/style.css';
 import {loadPage} from './modules/skeleton';
 import renderHomepage from './modules/homepage';

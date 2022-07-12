@@ -81,6 +81,8 @@ function createMenuTab(heading, bgImg, categories) {
     h2.textContent = heading;
     header.appendChild(h2);
     header.style.backgroundImage = `url(${bgImg})`;
+    tab.classList.add('wrapper');
+    tab.classList.add('menu-tab');
     tab.appendChild(header);
 
     categories.forEach(category => {

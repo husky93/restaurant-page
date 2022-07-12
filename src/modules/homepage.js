@@ -4,6 +4,7 @@ import InfoTwo from '../assets/infotwo.jpg';
 import InfoThree from '../assets/infothree.jpg';
 import InfoFour from '../assets/infofour.jpg';
 import HeroBg from '../assets/herobg.jpg';
+import MenuBg from '../assets/menu-bg.jpg';
 
 import {createParagraph, createWrapper, createLogo, createButton, createImage, createCard} from './skeleton';
 
@@ -49,8 +50,8 @@ function createMenuSection() {
     const heading = document.createElement('h2');
     const button = createButton('Open menu', ['btn', 'btn--secondary']);
 
+    menu.style.backgroundImage = `url(${MenuBg})`;
     menu.classList.add('menu-section');
-    menu.classList.add('wrapper');
     icon.classList.add('material-symbols-outlined');
     icon.textContent = 'restaurant';
     heading.textContent = 'Menu';

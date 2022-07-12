@@ -19,6 +19,10 @@ body {
     font-size: 15px;
 }
 
+.bold {
+    font-weight: 500;
+}
+
 .image {
     width: 400px;
     height: 300px;
@@ -220,11 +224,10 @@ header.scrolled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px 0;
+    padding: 64px 24px;
 }
 
 .about > .row {
-    margin-top: 64px;
     gap: 84px;
     align-items: center;
 }
@@ -236,7 +239,7 @@ header.scrolled {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 64px 0;
+    padding: 64px 24px;
     min-height: 50vh;
     background-size: cover;
     background-position: center center;
@@ -260,7 +263,7 @@ header.scrolled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 64px 0;
+    padding: 64px 24px;
 }
 
 .info > .row {
@@ -275,3 +278,19 @@ header.scrolled {
 }
 
 /* Footer */
+
+footer {
+    background-color: var(--text-color);
+    color: #fff;
+    padding: 48px 0;
+}
+
+footer .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-footer {
+    width: 200px;
+}

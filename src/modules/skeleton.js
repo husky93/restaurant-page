@@ -38,6 +38,7 @@ function createNav() {
 
 function createFooter() {
     const footer = document.createElement('footer');
+    const footerContainer = createWrapper(['wrapper']);
     const containerOne = createWrapper(['container']);
     const containerTwo = createWrapper(['container']);
     const containerThree = createWrapper(['container']);
@@ -46,10 +47,8 @@ function createFooter() {
 
     containerOne.appendChild(logoFooter);
 
-    footer.classList.add('wrapper');
-
     containerTwo.append(
-        createParagraph('Sprouts restaurant', ['text-footer']),
+        createParagraph('Nature restaurant', ['text-footer']),
         createParagraph('371 7th Ave, New York, NY 10001', ['text-footer']),
         createParagraph('United States of America', ['text-footer'])
         );
@@ -66,7 +65,8 @@ function createFooter() {
         createParagraph('example@gmail.com', ['bold', 'text-footer'])
         );
 
-    footer.append(containerOne,containerTwo,containerThree,containerFour);
+    footerContainer.append(containerOne,containerTwo,containerThree,containerFour);
+    footer.appendChild(footerContainer);
 
     return footer;
 }

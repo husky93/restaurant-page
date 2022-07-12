@@ -37,9 +37,9 @@ h1 {
 }
 
 h2 {
-    font-size: 24px;
+    font-size: 36px;
     position: relative;
-    margin-bottom: 32px;
+    margin-bottom: 48px;
 }
 
 h2::after {
@@ -79,7 +79,7 @@ h2::after {
 }
 
 .wrapper {
-    max-width: 1286px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -207,7 +207,8 @@ header.scrolled {
 }
 
 .about > .row {
-    gap: 48px;
+    margin-top: 64px;
+    gap: 84px;
     align-items: center;
 }
 
@@ -230,8 +231,14 @@ header.scrolled {
 }
 
 .info > .row {
-    gap: 48px;
+    margin-top: 64px;
+    gap: 84px;
     align-items: center;
+}
+
+.text--info {
+    font-size: 16px;
+    text-align: center;
 }
 
 /* Footer */

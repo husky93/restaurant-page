@@ -5,6 +5,7 @@
     --primary-color: #B0FF7E;
     --primary-color-hover: #9DE670;
     --primary-color-active: #83BF5E;
+    --text-color: #242526;
 }
 
 * {
@@ -15,6 +16,7 @@ body {
     background-color: var(--bg-color);
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
+    font-size: 15px;
 }
 
 .image {
@@ -32,6 +34,34 @@ h1 {
     text-transform: uppercase;
     font-size: 32px;
 }
+
+.btn {
+    border: none;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 12px 32px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 6px;
+}
+
+.btn--primary {
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: 3px var(--primary-color-hover) solid;
+}
+
+.btn--primary:hover {
+    background-color: var(--primary-color-hover);
+    border: 3px var(--primary-color-active) solid;
+}
+
+.btn--primary:active {
+    background-color: var(--primary-color-active);
+}
+
+
 
 /* Header */
 
@@ -58,7 +88,7 @@ header {
     color: var(--bg-color);
     text-decoration: none;
     position: relative;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .menu-link::after {

@@ -3,6 +3,7 @@ import './assets/style.css';
 import {loadPage} from './modules/skeleton';
 import renderHomepage from './modules/homepage';
 import renderMenu from './modules/menu';
+import renderContact from './modules/contact';
 
 loadPage();
 renderHomepage();

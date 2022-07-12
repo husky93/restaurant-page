@@ -6,7 +6,7 @@ const renderContact = () => {
         content.removeChild(content.lastElementChild);
     }
 
-    content.append(createParagraph('yo'['yo']));
+    content.append(createParagraph('yo',['yo']));
 }
 
 export default renderContact;

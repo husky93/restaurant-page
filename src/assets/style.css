@@ -25,11 +25,57 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+h1 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
 /* Header */
 
 header {
     position: fixed;
+    width: 100vw;
     top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+}
+
+.logo--header{
+    width: 200px;
+}
+
+.menu ul {
+    display: flex;
+    gap: 24px;
+}
+
+.menu-link {
+    color: var(--bg-color);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);;
+}
+
+.menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);;
+}
+
+.menu-item.active > .menu-link, .menu-item:hover > .menu-link {
+    color: white;
+}
+
+.menu-item.active > .menu-link::after, .menu-item:hover > .menu-link::after {
+    width: 100%;
 }
 
 /* Hero section */
@@ -43,4 +89,5 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 32px;
 }

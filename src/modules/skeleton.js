@@ -13,17 +13,18 @@ function createNav() {
     const list = document.createElement('ul')
     navBar.classList.add('menu');
     
-    list.append(createNavLink('Home', '#'), createNavLink('Menu', '#'), createNavLink('Contact', '#'));
+    list.append(createNavLink('Home', '#', ['menu-item', 'active']), createNavLink('Menu', '#', ['menu-item']), createNavLink('Contact', '#', ['menu-item']));
 
     navBar.appendChild(list);
     return navBar;
 
-    function createNavLink(text, link) {
+    function createNavLink(text, link, [...classes]) {
         const navItem = document.createElement('li');
         const navLink = document.createElement('a');
 
-        navItem.classList.add('menu-item');
         navLink.classList.add('menu-link');
+
+        classes.forEach(elem => navItem.classList.add(elem));
         
         navLink.textContent = text;
         navLink.setAttribute('href', link);

@@ -40,7 +40,7 @@ const slider = (() => {
                 promiseTwo = promiseTwo.then(() => {
                     setTimeout(() => {
                         sliderContainer.style.opacity = 1;
-                    }, 125)
+                    }, 200)
                     sliderContainer.style.backgroundImage = `url(${slide})`;
                     return new Promise(resolve => setTimeout(resolve, 1000))
                 })

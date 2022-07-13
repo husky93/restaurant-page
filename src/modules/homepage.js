@@ -7,45 +7,47 @@ import {createParagraph, createWrapper, createLogo, createButton, createImage, c
 
 const slider = (() => {
     const _slides = [HeroBg, HeroBgTwo, HeroBgThree];
-    let sliderContainer = null;
-    let _startSlider = null;
+    const slider = document.createElement('div');
+    let autoplayInterval = null;
+    let _slideIndex = 0;
 
     const createSlider = () => {
-        sliderContainer = document.createElement('div');
-        sliderContainer.classList.add('hero_slider');
-        _playAllSlides();
-        setTimeout(_startSlider = setInterval(_playAllSlides, 15000), 5000);
-    }
-
-    const appendSlider = (parent) => {
-        parent.insertBefore(sliderContainer, parent.firstChild);
-    }
-
-    const stopSlider = () => {
-        clearInterval(_startSlider);
-    }
-
-    // No idea what is going on here, stackoverflow wrote this code for me. It works though :D
-    const _playAllSlides = () => {
-        let promise = Promise.resolve();
+        slider.classList.add('slider');
         _slides.forEach(slide => {
-            promise = promise.then(() => {
-                let promiseTwo = Promise.resolve();
-                sliderContainer.style.opacity = 0.5;
-                promiseTwo = promiseTwo.then(() => {
-                    setTimeout(() => {
-                        sliderContainer.style.opacity = 1;
-                    }, 200)
-                    sliderContainer.style.backgroundImage = `url(${slide})`;
-                    return new Promise(resolve => setTimeout(resolve, 1000))
-                })
-                return new Promise(resolve => setTimeout(resolve, 5000))
-            })
-
+            const i = Math.floor(Math.random() * 2 + 1)
+            const slideContainer = document.createElement('div');
+            slideContainer.classList.add('hero_slide');
+            i === 1 ? slideContainer.classList.add('fadein') : slideContainer.classList.add('fadeout');
+            slideContainer.style.backgroundImage = `url(${slide})`;
+            slider.appendChild(slideContainer);
         })
     }
 
-    return {createSlider, appendSlider, stopSlider}
+    const appendSlider = (parent) => {
+        parent.insertBefore(slider, parent.firstChild);
+    }
+
+    const startSlider = () => {
+        _playSlide();
+        autoplayInterval = setInterval(_playSlide, 3500);
+    }
+
+    const stopSlider = () => {
+        clearInterval(autoplayInterval);
+    }
+
+    const _playSlide = () => {
+        let i;
+        let slides = Array.from(document.querySelectorAll('.hero_slide'));
+        for(i = 0; i < slides.length; i++){
+            slides[i].style.display = "none";
+        }
+        _slideIndex++;
+        if(_slideIndex > slides.length) _slideIndex = 1;
+        slides[_slideIndex-1].style.display = "block";
+    }
+
+    return {createSlider, appendSlider, startSlider, stopSlider}
 })();
 
 
@@ -55,7 +57,6 @@ function createHeroSection() {
     const heading = document.createElement('h1');
     const button = createButton('MENU', ['btn', 'btn--primary']);
 
-    slider.createSlider();
     slider.appendSlider(hero);
     
     hero.classList.add('hero');

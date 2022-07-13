@@ -314,7 +314,7 @@ header {
     padding: 0 24px;
 }
 
-.hero_slider {
+.hero_slide {
     opacity: 1;
     position: absolute;
     left: 0;
@@ -325,7 +325,53 @@ header {
     z-index: -1;
     width: 100%;
     height: 100vh;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)
+    transition: all 0.4s;
+    -moz-transform: scale(1,1);
+    -webkit-transform: scale(1,1);
+    transform: scale(1,1);
+}
+
+.fadein {
+    animation: fade 0.3s, zoomin 18s;
+}
+
+.fadeout {
+    animation: fade 0.3s, zoomout 18s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    } 
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes zoomin {
+    0% {
+        -moz-transform: scale(1.2,1.2);
+        -webkit-transform: scale(1.2,1.2);
+        transform: scale(1.2,1.2);
+    }
+    100% {
+        -moz-transform: scale(1,1);
+        -webkit-transform: scale(1,1);
+        transform: scale(1,1);
+    }
+}
+
+@keyframes zoomout {
+    0% {
+        -moz-transform: scale(1,1);
+        -webkit-transform: scale(1,1);
+        transform: scale(1,1);
+    }
+    100% {
+        -moz-transform: scale(1.2,1.2);
+        -webkit-transform: scale(1.2,1.2);
+        transform: scale(1.2,1.2);
+    }
 }
 
 /* About section */

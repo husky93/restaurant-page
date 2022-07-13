@@ -5,6 +5,8 @@ import {renderHomepage, slider} from './modules/homepage';
 
 loadPage();
 renderHomepage();
+slider.createSlider();
+slider.startSlider();
 
 const links = document.querySelectorAll('.menu-item');
 links.forEach(link => link.addEventListener('click', switchPage));
@@ -21,23 +23,25 @@ function switchPage(e) {
     e.target.parentNode.classList.add('active');
 
     if(e.target.parentNode.classList.contains('link--homepage'))
+    {
         renderHomepage();
+        slider.startSlider();
+    }
     else if(e.target.parentNode.classList.contains('link--menu'))
         {
             import( /* webpackChunkName: "menu" */ './modules/menu').then(module => {
                 const renderMenu = module.default;
+                slider.stopSlider();
                 renderMenu();
             })
-            // Clear the interval from the homepage code.
-            slider.stopSlider();
         }
     else if(e.target.parentNode.classList.contains('link--contact'))
         {
             import( /* webpackChunkName: "contact" */'./modules/contact').then(module => {
                 const renderContact = module.default;
+                slider.stopSlider();
                 renderContact();
             })
-            slider.stopSlider();
         }
     
 }

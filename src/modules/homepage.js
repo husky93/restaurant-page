@@ -4,9 +4,54 @@ import InfoTwo from '../assets/infotwo.jpg';
 import InfoThree from '../assets/infothree.jpg';
 import InfoFour from '../assets/infofour.jpg';
 import HeroBg from '../assets/herobg.jpg';
+import HeroBgTwo from '../assets/herobgtwo.jpg';
+import HeroBgThree from '../assets/herobgthree.jpg';
 import MenuBg from '../assets/menu-bg.jpg';
 
 import {createParagraph, createWrapper, createLogo, createButton, createImage, createCard} from './skeleton';
+
+const slider = (() => {
+    const _slides = [HeroBg, HeroBgTwo, HeroBgThree];
+    let sliderContainer = null;
+    let _startSlider = null;
+
+    const createSlider = () => {
+        sliderContainer = document.createElement('div');
+        sliderContainer.classList.add('hero_slider');
+        _playAllSlides();
+        setTimeout(_startSlider = setInterval(_playAllSlides, 15000), 5000);
+    }
+
+    const appendSlider = (parent) => {
+        parent.insertBefore(sliderContainer, parent.firstChild);
+    }
+
+    const stopSlider = () => {
+        clearInterval(_startSlider);
+    }
+
+    const _playAllSlides = () => {
+        let promise = Promise.resolve();
+        _slides.forEach(slide => {
+            promise = promise.then(() => {
+                let promiseTwo = Promise.resolve();
+                sliderContainer.style.opacity = 0.5;
+                promiseTwo = promiseTwo.then(() => {
+                    setTimeout(() => {
+                        sliderContainer.style.opacity = 1;
+                    }, 125)
+                    sliderContainer.style.backgroundImage = `url(${slide})`;
+                    return new Promise(resolve => setTimeout(resolve, 1000))
+                })
+                return new Promise(resolve => setTimeout(resolve, 5000))
+            })
+
+        })
+    }
+
+    return {createSlider, appendSlider, stopSlider}
+})();
+
 
 function createHeroSection() {
     const hero = document.createElement('section');
@@ -14,8 +59,10 @@ function createHeroSection() {
     const heading = document.createElement('h1');
     const button = createButton('MENU', ['btn', 'btn--primary']);
 
+    slider.createSlider();
+    slider.appendSlider(hero);
+    
     hero.classList.add('hero');
-    hero.style.backgroundImage = `url(${HeroBg})`;
     heading.textContent = "Traditional Polish Cuisine";
 
     hero.append(logo, heading, button);
@@ -107,4 +154,4 @@ const renderHomepage = () => {
     content.append(createHeroSection(), createAboutSection(), createMenuSection(), createInfoSection());
 }
 
-export default renderHomepage;
+export {renderHomepage, slider};

@@ -1,7 +1,7 @@
 import './assets/reset.css';
 import './assets/style.css';
 import {loadPage} from './modules/skeleton';
-import renderHomepage from './modules/homepage';
+import {renderHomepage, slider} from './modules/homepage';
 import renderMenu from './modules/menu';
 import renderContact from './modules/contact';
 
@@ -26,9 +26,15 @@ function switchPage(e) {
     if(e.target.parentNode.classList.contains('link--homepage'))
         renderHomepage();
     else if(e.target.parentNode.classList.contains('link--menu'))
-        renderMenu();
+        {
+            renderMenu();
+            slider.stopSlider();
+        }
     else if(e.target.parentNode.classList.contains('link--contact'))
-        renderContact();
+        {
+            renderContact();
+            slider.stopSlider();
+        }
     
 }
 

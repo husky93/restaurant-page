@@ -17,6 +17,10 @@ body {
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     font-size: 15px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .content {
@@ -299,9 +303,7 @@ header {
 /* Hero section */
 
 .hero {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -309,6 +311,20 @@ header {
     justify-content: center;
     gap: 32px;
     padding: 0 24px;
+}
+
+.hero_slider {
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 /* About section */

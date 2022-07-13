@@ -33,8 +33,8 @@ const renderContact = () => {
     const content = document.querySelector('.content');
     const header = document.querySelector('header');
 
-    if(!header.classList.contains('dark'))
-    header.classList.remove('dark');
+    if(header.classList.contains('dark'))
+        header.classList.remove('dark');
 
     while (content.lastElementChild) {
         content.removeChild(content.lastElementChild);

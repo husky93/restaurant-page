@@ -28,6 +28,7 @@ function switchPage(e) {
     else if(e.target.parentNode.classList.contains('link--menu'))
         {
             renderMenu();
+            // Clear the interval from the homepage code.
             slider.stopSlider();
         }
     else if(e.target.parentNode.classList.contains('link--contact'))

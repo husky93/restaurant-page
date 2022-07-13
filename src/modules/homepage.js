@@ -30,6 +30,7 @@ const slider = (() => {
         clearInterval(_startSlider);
     }
 
+    // No idea what is going on here, stackoverflow wrote this code for me. It works though :D
     const _playAllSlides = () => {
         let promise = Promise.resolve();
         _slides.forEach(slide => {

@@ -2,14 +2,11 @@ import './assets/reset.css';
 import './assets/style.css';
 import {loadPage} from './modules/skeleton';
 import {renderHomepage, slider} from './modules/homepage';
-import renderMenu from './modules/menu';
-import renderContact from './modules/contact';
 
 loadPage();
 renderHomepage();
 
 const links = document.querySelectorAll('.menu-item');
-console.log(links);
 links.forEach(link => link.addEventListener('click', switchPage));
 
 function switchPage(e) {
@@ -27,16 +24,20 @@ function switchPage(e) {
         renderHomepage();
     else if(e.target.parentNode.classList.contains('link--menu'))
         {
-            renderMenu();
+            import( './modules/menu').then(module => {
+                const renderMenu = module.default;
+                renderMenu();
+            })
             // Clear the interval from the homepage code.
             slider.stopSlider();
         }
     else if(e.target.parentNode.classList.contains('link--contact'))
         {
-            renderContact();
+            import('./modules/contact').then(module => {
+                const renderContact = module.default;
+                renderContact();
+            })
             slider.stopSlider();
         }
     
 }
-
-console.log('Hello!');

@@ -5,7 +5,6 @@ import Wines from '../assets/wine.jpg';
 
 import {createParagraph, createWrapper} from './skeleton';
 
-
 class Dish {
     constructor(name, desc, price){
         this.name = name;

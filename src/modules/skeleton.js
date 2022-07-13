@@ -103,13 +103,20 @@ const createButton = (text, [...classList]) => {
     return btn
 }
 
-const createImage = (src, [...classList]) => {
+const createImage = (imageName, [...classList]) => {
     const img = new Image();
-    img.src = src;
     classList.forEach(elem => img.classList.add(elem));
-
+    lazyLoadImage(imageName, img)
     return img;
 }
+
+const lazyLoadImage = (imageName, img) => {
+    import(
+      `../assets/${imageName}.jpg`
+    )
+    .then(src => img.src = src.default)
+    .catch(err => console.error(err));
+};
 
 const createLogo = ([...classList]) => {
     const logo = new Image();
@@ -148,4 +155,4 @@ const loadPage = () => {
     })
 }
 
-export {loadPage, createParagraph, createWrapper, createLogo, createButton, createImage, createCard};
+export {loadPage, createParagraph, createWrapper, createLogo, createButton, createImage, createCard, lazyLoadImage};

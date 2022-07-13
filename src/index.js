@@ -24,7 +24,7 @@ function switchPage(e) {
         renderHomepage();
     else if(e.target.parentNode.classList.contains('link--menu'))
         {
-            import( './modules/menu').then(module => {
+            import( /* webpackChunkName: "menu" */ './modules/menu').then(module => {
                 const renderMenu = module.default;
                 renderMenu();
             })
@@ -33,7 +33,7 @@ function switchPage(e) {
         }
     else if(e.target.parentNode.classList.contains('link--contact'))
         {
-            import('./modules/contact').then(module => {
+            import( /* webpackChunkName: "contact" */'./modules/contact').then(module => {
                 const renderContact = module.default;
                 renderContact();
             })

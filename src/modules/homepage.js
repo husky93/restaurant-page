@@ -1,8 +1,3 @@
-import AboutImg from '../assets/about.jpg';
-import InfoOne from '../assets/infoone.jpg';
-import InfoTwo from '../assets/infotwo.jpg';
-import InfoThree from '../assets/infothree.jpg';
-import InfoFour from '../assets/infofour.jpg';
 import HeroBg from '../assets/herobg.jpg';
 import HeroBgTwo from '../assets/herobgtwo.jpg';
 import HeroBgThree from '../assets/herobgthree.jpg';
@@ -79,7 +74,7 @@ function createAboutSection() {
     totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\
     Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit')
     const right = createWrapper(['container']);
-    const aboutImage = createImage(AboutImg, ['image']);
+    const aboutImage = createImage('about', ['image']);
 
     about.classList.add('about');
     about.classList.add('wrapper');
@@ -125,16 +120,16 @@ function createInfoSection() {
     rowOne.append(createCard('Elegance', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,\
     nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,\
     vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'),
-    createImage(InfoOne, ['image', 'image--info']));
+    createImage('infoone', ['image', 'image--info']));
 
-    rowTwo.append(createImage(InfoTwo, ['image', 'image--info']), createCard('Nature', 'At vero eos et accusamus et iusto odio dignissimos \
+    rowTwo.append(createImage('infotwo', ['image', 'image--info']), createCard('Nature', 'At vero eos et accusamus et iusto odio dignissimos \
     ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate \
     non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'));
 
     rowThree.append(createCard('Space outside', 'Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis \
-    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est'), createImage(InfoFour, ['image', 'image--info']));
+    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est'), createImage('infofour', ['image', 'image--info']));
 
-    rowFour.append(createImage(InfoThree, ['image', 'image--info']), createCard('You\'re Invited!', 'Itaque earum rerum hic tenetur a sapiente delectus, \
+    rowFour.append(createImage('infothree', ['image', 'image--info']), createCard('You\'re Invited!', 'Itaque earum rerum hic tenetur a sapiente delectus, \
     ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'));
 
     info.append(heading, para, rowOne, rowTwo, rowThree, rowFour);

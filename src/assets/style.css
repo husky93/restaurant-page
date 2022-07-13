@@ -335,6 +335,7 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 64px 24px;
+    min-height: 500px;
 }
 
 .about > .row {
@@ -375,6 +376,7 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 64px 24px;
+    min-height: 500px;
 }
 
 .info > .row {

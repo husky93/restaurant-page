@@ -4,9 +4,22 @@ function createHeader() {
     const header = document.createElement('header');
     const logo = createLogo(['logo', 'logo--header']);
     const wrapper = createWrapper(['wrapper', 'header--wrapper'])
+    const hamburger = document.createElement('a');
+    const menuIcon = document.createElement('span');
+
+    hamburger.addEventListener('click', () => {
+        wrapper.classList.toggle('expanded');
+    })
+
+    menuIcon.classList.add('material-symbols-outlined');
+    menuIcon.classList.add('hamburger-icon');
+    menuIcon.textContent = 'menu';
+    hamburger.classList.add('hamburger');
+    hamburger.appendChild(menuIcon);
+
     wrapper.append(logo, createNav());
 
-    header.appendChild(wrapper);
+    header.append(wrapper, hamburger);
     return header;
 }
 

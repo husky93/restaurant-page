@@ -482,3 +482,26 @@ footer .container {
     margin-top: 8px;
 }
 
+/* Contact */
+
+.contact {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper--contact {
+    padding: 86px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    justify-content: center;
+}
+
+.wrapper--contact .card {
+    flex: 1;
+}

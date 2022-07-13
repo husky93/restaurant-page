@@ -202,6 +202,11 @@ header {
     cursor: pointer;
 }
 
+.dark {
+    background-color: rgba(36,37,38, 0.75);
+    backdrop-filter: blur(4px);
+}
+
 header.scrolled > .wrapper .logo--header {
     width: 120px;
 }

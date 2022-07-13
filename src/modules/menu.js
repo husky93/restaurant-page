@@ -3,7 +3,7 @@ import Main from '../assets/main.jpg';
 import Side from '../assets/side.jpg';
 import Wines from '../assets/wine.jpg';
 
-import {createParagraph, createWrapper, createLogo, createButton, createImage, createCard} from './skeleton';
+import {createParagraph, createWrapper} from './skeleton';
 
 
 class Dish {
@@ -108,6 +108,10 @@ function createMenuTab(heading, bgImg, categories) {
 
 const renderMenu = () => {
     const content = document.querySelector('.content');
+    const header = document.querySelector('header');
+    if(!header.classList.contains('dark'))
+        header.classList.add('dark');
+
     while (content.lastElementChild) {
         content.removeChild(content.lastElementChild);
     }
@@ -116,6 +120,7 @@ const renderMenu = () => {
     const tabTwo = createMenuTab('Main Courses', Main, [new Category('favorites', dishListFavorites), new Category('pierogi', dishListPierogi), new Category('salads', dishListSalads)]);
     const tabThree = createMenuTab('Drinks', Drinks, [new Category('drinks', dishListDrinks)]);
     const tabFour = createMenuTab('Wines', Wines, [new Category('white', dishListWhite), new Category('red', dishListRed)]);
+    tab.style.marginTop = '164px';
 
     content.append(tab, tabTwo, tabThree, tabFour);
 }

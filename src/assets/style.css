@@ -334,11 +334,11 @@ header {
 }
 
 .fadein {
-    animation: fade 0.3s, zoomin 18s;
+    animation: fade 0.25s, zoomin 18s;
 }
 
 .fadeout {
-    animation: fade 0.3s, zoomout 18s;
+    animation: fade 0.25s, zoomout 18s;
 }
 
 @keyframes fade {

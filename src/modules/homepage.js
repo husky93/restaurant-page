@@ -3,152 +3,157 @@ import HeroBgTwo from '../assets/herobgtwo.jpg';
 import HeroBgThree from '../assets/herobgthree.jpg';
 import MenuBg from '../assets/menu-bg.jpg';
 
-import {createParagraph, createWrapper, createLogo, createButton, createImage, createCard} from './skeleton';
+import {
+  createParagraph, createWrapper, createLogo, createButton, createImage, createCard,
+} from './skeleton';
 
 const slider = (() => {
-    const _slides = [HeroBg, HeroBgTwo, HeroBgThree];
-    const slider = document.createElement('div');
-    let autoplayInterval = null;
-    let _slideIndex = 0;
+  const slides = [HeroBg, HeroBgTwo, HeroBgThree];
+  const sliderContainer = document.createElement('div');
+  let autoplayInterval = null;
+  let slideIndex = 0;
 
-    const createSlider = () => {
-        slider.classList.add('slider');
-        _slides.forEach(slide => {
-            const i = Math.floor(Math.random() * 2 + 1)
-            const slideContainer = document.createElement('div');
-            slideContainer.classList.add('hero_slide');
-            i === 1 ? slideContainer.classList.add('fadein') : slideContainer.classList.add('fadeout');
-            slideContainer.style.backgroundImage = `url(${slide})`;
-            slider.appendChild(slideContainer);
-        })
+  const createSlider = () => {
+    sliderContainer.classList.add('slider');
+    slides.forEach((slide) => {
+      const i = Math.floor(Math.random() * 2 + 1);
+      const slideContainer = document.createElement('div');
+      slideContainer.classList.add('hero_slide');
+      if (i === 1) { slideContainer.classList.add('fadein'); } else { slideContainer.classList.add('fadeout'); }
+      slideContainer.style.backgroundImage = `url(${slide})`;
+      sliderContainer.appendChild(slideContainer);
+    });
+  };
+
+  const appendSlider = (parent) => {
+    parent.insertBefore(sliderContainer, parent.firstChild);
+  };
+
+  const stopSlider = () => {
+    clearInterval(autoplayInterval);
+  };
+
+  const playSlide = () => {
+    let i;
+    const slidesArray = Array.from(document.querySelectorAll('.hero_slide'));
+    for (i = 0; i < slidesArray.length; i += 1) {
+      slidesArray[i].style.display = 'none';
     }
+    slideIndex += 1;
+    if (slideIndex > slidesArray.length) slideIndex = 1;
+    slidesArray[slideIndex - 1].style.display = 'block';
+  };
 
-    const appendSlider = (parent) => {
-        parent.insertBefore(slider, parent.firstChild);
-    }
+  const startSlider = () => {
+    playSlide();
+    autoplayInterval = setInterval(playSlide, 3500);
+  };
 
-    const startSlider = () => {
-        _playSlide();
-        autoplayInterval = setInterval(_playSlide, 3500);
-    }
-
-    const stopSlider = () => {
-        clearInterval(autoplayInterval);
-    }
-
-    const _playSlide = () => {
-        let i;
-        let slides = Array.from(document.querySelectorAll('.hero_slide'));
-        for(i = 0; i < slides.length; i++){
-            slides[i].style.display = "none";
-        }
-        _slideIndex++;
-        if(_slideIndex > slides.length) _slideIndex = 1;
-        slides[_slideIndex-1].style.display = "block";
-    }
-
-    return {createSlider, appendSlider, startSlider, stopSlider}
+  return {
+    createSlider, appendSlider, startSlider, stopSlider,
+  };
 })();
 
-
 function createHeroSection() {
-    const hero = document.createElement('section');
-    const logo = createLogo(['logo', 'logo--hero']);
-    const heading = document.createElement('h1');
-    const button = createButton('MENU', ['btn', 'btn--primary']);
+  const hero = document.createElement('section');
+  const logo = createLogo(['logo', 'logo--hero']);
+  const heading = document.createElement('h1');
+  const button = createButton('MENU', ['btn', 'btn--primary']);
 
-    slider.appendSlider(hero);
-    
-    hero.classList.add('hero');
-    heading.textContent = "Traditional Polish Cuisine";
+  slider.appendSlider(hero);
 
-    hero.append(logo, heading, button);
+  hero.classList.add('hero');
+  heading.textContent = 'Traditional Polish Cuisine';
 
-    return hero;
+  hero.append(logo, heading, button);
+
+  return hero;
 }
 
 function createAboutSection() {
-    const about = document.createElement('section');
-    const heading = document.createElement('h2');
-    const container = createWrapper(['row']);
-    const left = createCard('Get to know us', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,\
-    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\
-    Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit')
-    const right = createWrapper(['container']);
-    const aboutImage = createImage('about', ['image']);
+  const about = document.createElement('section');
+  const heading = document.createElement('h2');
+  const container = createWrapper(['row']);
+  const left = createCard('Get to know us', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,'
+    + 'totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'
+    + 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit');
+  const right = createWrapper(['container']);
+  const aboutImage = createImage('about', ['image']);
 
-    about.classList.add('about');
-    about.classList.add('wrapper');
-    heading.textContent = "About us";
+  about.classList.add('about');
+  about.classList.add('wrapper');
+  heading.textContent = 'About us';
 
-    right.appendChild(aboutImage);
-    container.append(left, right);
-    about.append(heading, container);
+  right.appendChild(aboutImage);
+  container.append(left, right);
+  about.append(heading, container);
 
-    return about;
+  return about;
 }
 
 function createMenuSection() {
-    const menu = document.createElement('section');
-    const icon = document.createElement('span');
-    const heading = document.createElement('h2');
-    const button = createButton('Open menu', ['btn', 'btn--secondary']);
+  const menu = document.createElement('section');
+  const icon = document.createElement('span');
+  const heading = document.createElement('h2');
+  const button = createButton('Open menu', ['btn', 'btn--secondary']);
 
-    menu.style.backgroundImage = `url(${MenuBg})`;
-    menu.classList.add('menu-section');
-    icon.classList.add('material-symbols-outlined');
-    icon.textContent = 'restaurant';
-    heading.textContent = 'Menu';
+  menu.style.backgroundImage = `url(${MenuBg})`;
+  menu.classList.add('menu-section');
+  icon.classList.add('material-symbols-outlined');
+  icon.textContent = 'restaurant';
+  heading.textContent = 'Menu';
 
-    menu.append(icon, heading, button);
+  menu.append(icon, heading, button);
 
-    return menu;
+  return menu;
 }
 
 function createInfoSection() {
-    const info = document.createElement('section');
-    const heading = document.createElement('h2');
-    const para = createParagraph('Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.',['text--info']);
+  const info = document.createElement('section');
+  const heading = document.createElement('h2');
+  const para = createParagraph('Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', ['text--info']);
 
-    const rowOne = createWrapper(['row']);
-    const rowTwo = createWrapper(['row']);
-    const rowThree = createWrapper(['row']);
-    const rowFour = createWrapper(['row']);
-    info.classList.add('wrapper');
-    info.classList.add('info');
-    heading.textContent = 'Climatic restaurant - New York';
+  const rowOne = createWrapper(['row']);
+  const rowTwo = createWrapper(['row']);
+  const rowThree = createWrapper(['row']);
+  const rowFour = createWrapper(['row']);
+  info.classList.add('wrapper');
+  info.classList.add('info');
+  heading.textContent = 'Climatic restaurant - New York';
 
-    rowOne.append(createCard('Elegance', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,\
-    nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,\
-    vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'),
-    createImage('infoone', ['image', 'image--info']));
+  rowOne.append(
+    createCard('Elegance', 'Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,'
+    + 'nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,'
+    + 'vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?'),
+    createImage('infoone', ['image', 'image--info']),
+  );
 
-    rowTwo.append(createImage('infotwo', ['image', 'image--info']), createCard('Nature', 'At vero eos et accusamus et iusto odio dignissimos \
-    ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate \
-    non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'));
+  rowTwo.append(createImage('infotwo', ['image', 'image--info']), createCard('Nature', 'At vero eos et accusamus et iusto odio dignissimos'
+    + 'ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate'
+    + 'non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'));
 
-    rowThree.append(createCard('Space outside', 'Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis \
-    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est'), createImage('infofour', ['image', 'image--info']));
+  rowThree.append(createCard('Space outside', 'Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis'
+    + 'est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est'), createImage('infofour', ['image', 'image--info']));
 
-    rowFour.append(createImage('infothree', ['image', 'image--info']), createCard('You\'re Invited!', 'Itaque earum rerum hic tenetur a sapiente delectus, \
-    ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'));
+  rowFour.append(createImage('infothree', ['image', 'image--info']), createCard('You\'re Invited!', 'Itaque earum rerum hic tenetur a sapiente delectus, '
+    + 'ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'));
 
-    info.append(heading, para, rowOne, rowTwo, rowThree, rowFour);
+  info.append(heading, para, rowOne, rowTwo, rowThree, rowFour);
 
-    return info;
+  return info;
 }
 
 const renderHomepage = () => {
-    const content = document.querySelector('.content');
-    const header = document.querySelector('header');
-    if(header.classList.contains('dark'))
-        header.classList.remove('dark');
+  const content = document.querySelector('.content');
+  const header = document.querySelector('header');
+  if (header.classList.contains('dark')) { header.classList.remove('dark'); }
 
-    while (content.lastElementChild) {
-        content.removeChild(content.lastElementChild);
-    }
+  while (content.lastElementChild) {
+    content.removeChild(content.lastElementChild);
+  }
 
-    content.append(createHeroSection(), createAboutSection(), createMenuSection(), createInfoSection());
-}
+  // eslint-disable-next-line max-len
+  content.append(createHeroSection(), createAboutSection(), createMenuSection(), createInfoSection());
+};
 
-export {renderHomepage, slider};
+export { renderHomepage, slider };

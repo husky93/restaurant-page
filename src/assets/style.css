@@ -342,10 +342,10 @@ header {
 }
 
 @keyframes fade {
-    from {
+    0% {
         opacity: .4
     } 
-    to {
+    100% {
         opacity: 1
     }
 }

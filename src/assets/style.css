@@ -334,11 +334,11 @@ header {
 }
 
 .fadein {
-    animation: fade 0.25s, zoomin 18s;
+    animation: fade 0.25s, zoomIn 18s;
 }
 
 .fadeout {
-    animation: fade 0.25s, zoomout 18s;
+    animation: fade 0.25s, zoomOut 18s;
 }
 
 @keyframes fade {
@@ -350,7 +350,7 @@ header {
     }
 }
 
-@keyframes zoomin {
+@keyframes zoomIn {
     0% {
         -moz-transform: scale(1.2,1.2);
         -webkit-transform: scale(1.2,1.2);
@@ -363,7 +363,7 @@ header {
     }
 }
 
-@keyframes zoomout {
+@keyframes zoomOut {
     0% {
         -moz-transform: scale(1,1);
         -webkit-transform: scale(1,1);

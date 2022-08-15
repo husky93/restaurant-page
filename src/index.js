@@ -11,6 +11,7 @@ const links = document.querySelectorAll('.menu-item');
 links.forEach((link) => link.addEventListener('click', switchPage));
 
 function switchPage(e) {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   const header = document.querySelector('.header--wrapper');
   if (header.classList.contains('expanded')) {
     header.classList.remove('expanded');

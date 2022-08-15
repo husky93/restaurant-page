@@ -29,10 +29,10 @@ const createLogo = ([...classList]) => {
 
 const lazyLoadImage = (imageName, img) => {
   const image = img;
-  import(
-    `../assets/${imageName}.jpg`
-  )
-    .then((src) => { image.src = src.default; })
+  import(`../assets/${imageName}.jpg`)
+    .then((src) => {
+      image.src = src.default;
+    })
     .catch((err) => console.error(err));
 };
 
@@ -62,7 +62,11 @@ function createNav() {
   const list = document.createElement('ul');
   navBar.classList.add('menu');
 
-  list.append(createNavLink('Home', ['menu-item', 'active', 'link--homepage']), createNavLink('Menu', ['menu-item', 'link--menu']), createNavLink('Contact', ['menu-item', 'link--contact']));
+  list.append(
+    createNavLink('Home', ['menu-item', 'active', 'link--homepage']),
+    createNavLink('Menu', ['menu-item', 'link--menu']),
+    createNavLink('Contact', ['menu-item', 'link--contact'])
+  );
 
   navBar.appendChild(list);
   return navBar;
@@ -105,22 +109,27 @@ function createFooter() {
   containerTwo.append(
     createParagraph('Nature restaurant', ['text-footer']),
     createParagraph('371 7th Ave, New York, NY 10001', ['text-footer']),
-    createParagraph('United States of America', ['text-footer']),
+    createParagraph('United States of America', ['text-footer'])
   );
 
   containerThree.append(
     createParagraph('Open:', ['text-footer']),
     createParagraph('Monday till Sunday', ['text-footer']),
-    createParagraph('10:00am - 10:00pm', ['text-footer']),
+    createParagraph('10:00am - 10:00pm', ['text-footer'])
   );
 
   containerFour.append(
     createParagraph('Phone: 5567748843332', ['bold', 'text-footer']),
     createParagraph('Email:', ['text-footer']),
-    createParagraph('example@gmail.com', ['bold', 'text-footer']),
+    createParagraph('example@gmail.com', ['bold', 'text-footer'])
   );
 
-  footerContainer.append(containerOne, containerTwo, containerThree, containerFour);
+  footerContainer.append(
+    containerOne,
+    containerTwo,
+    containerThree,
+    containerFour
+  );
   footer.appendChild(footerContainer);
 
   return footer;

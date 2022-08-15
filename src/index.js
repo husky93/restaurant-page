@@ -7,11 +7,14 @@ loadPage();
 renderHomepage();
 slider.createSlider();
 slider.startSlider();
-
 const links = document.querySelectorAll('.menu-item');
 links.forEach((link) => link.addEventListener('click', switchPage));
 
 function switchPage(e) {
+  const header = document.querySelector('.header--wrapper');
+  if (header.classList.contains('expanded')) {
+    header.classList.remove('expanded');
+  }
   if (e.target.parentNode.classList.contains('active')) {
     return 0;
   }

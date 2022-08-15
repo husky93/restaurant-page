@@ -191,6 +191,7 @@ header {
 
 .hamburger {
     cursor: pointer;
+    z-index: 999;
 }
 
 .hamburger-icon {

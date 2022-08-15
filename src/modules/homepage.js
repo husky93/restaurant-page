@@ -1,8 +1,4 @@
-import HeroBg from '../assets/herobg.jpg';
-import HeroBgTwo from '../assets/herobgtwo.jpg';
-import HeroBgThree from '../assets/herobgthree.jpg';
 import MenuBg from '../assets/menu-bg.jpg';
-
 import {
   createParagraph,
   createWrapper,
@@ -11,6 +7,12 @@ import {
   createImage,
   createCard,
 } from './skeleton';
+
+const HeroBg = import(/* webpackPreload: true */ '../assets/herobg.jpg');
+const HeroBgTwo = import(/* webpackPreload: true */ '../assets/herobgtwo.jpg');
+const HeroBgThree = import(
+  /* webpackPreload: true */ '../assets/herobgthree.jpg'
+);
 
 const slider = (() => {
   const slides = [HeroBg, HeroBgTwo, HeroBgThree];
@@ -29,12 +31,19 @@ const slider = (() => {
 
   const createSlider = () => {
     sliderContainer.classList.add('slider');
-    slides.forEach((item) => {
+    const slideNodes = [];
+    slides.forEach(() => {
       const slide = document.createElement('div');
       animateSlide(slide);
       slide.classList.add('hero_slide');
-      slide.style.backgroundImage = `url(${item})`;
       sliderContainer.appendChild(slide);
+      slideNodes.push(slide);
+    });
+    Promise.all(slides).then((images) => {
+      images.forEach((img, index) => {
+        const slide = slideNodes[index];
+        slide.style.backgroundImage = `url(${img.default})`;
+      });
     });
   };
 

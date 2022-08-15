@@ -2,11 +2,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: './src/index.js',
-  devServer: {
-    static: './dist',
-  },
+  // devServer: {
+  //   static: './dist',
+  // },
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),

@@ -40,7 +40,9 @@ const slider = (() => {
       slideNodes.push(slide);
     });
     Promise.all(slides).then((images) => {
+      const image = new Image();
       images.forEach((img, index) => {
+        image.src = img.default;
         const slide = slideNodes[index];
         slide.style.backgroundImage = `url(${img.default})`;
       });

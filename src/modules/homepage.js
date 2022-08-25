@@ -70,7 +70,7 @@ const slider = (() => {
 
   const startSlider = () => {
     playSlide();
-    autoplayInterval = setInterval(playSlide, 3500);
+    autoplayInterval = setInterval(playSlide, 5500);
   };
 
   return {

@@ -1,4 +1,8 @@
 import MenuBg from '../assets/menu-bg.jpg';
+import HeroBg from '../assets/herobg.jpg';
+import HeroBgTwo from '../assets/herobgtwo.jpg';
+import HeroBgThree from '../assets/herobgthree.jpg';
+
 import {
   createParagraph,
   createWrapper,
@@ -7,12 +11,6 @@ import {
   createImage,
   createCard,
 } from './skeleton';
-
-const HeroBg = import(/* webpackPreload: true */ '../assets/herobg.jpg');
-const HeroBgTwo = import(/* webpackPreload: true */ '../assets/herobgtwo.jpg');
-const HeroBgThree = import(
-  /* webpackPreload: true */ '../assets/herobgthree.jpg'
-);
 
 const slider = (() => {
   const slides = [HeroBg, HeroBgTwo, HeroBgThree];
@@ -29,6 +27,21 @@ const slider = (() => {
     }
   };
 
+  const loadImages = (srcArray) => {
+    const array = srcArray.map(
+      (image) =>
+        new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            resolve(img);
+          };
+          img.src = image;
+        })
+    );
+
+    return array;
+  };
+
   const createSlider = () => {
     sliderContainer.classList.add('slider');
     const slideNodes = [];
@@ -39,12 +52,10 @@ const slider = (() => {
       sliderContainer.appendChild(slide);
       slideNodes.push(slide);
     });
-    Promise.all(slides).then((images) => {
-      const image = new Image();
+    Promise.all(loadImages(slides)).then((images) => {
       images.forEach((img, index) => {
-        image.src = img.default;
         const slide = slideNodes[index];
-        slide.style.backgroundImage = `url(${img.default})`;
+        slide.style.backgroundImage = `url(${img.src})`;
       });
     });
   };

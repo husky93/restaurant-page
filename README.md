@@ -4,13 +4,13 @@
 
 Restaurant page project made in order to polish DOM manipulation in JavaScript and dynamic website generation skills, as well as get to know [webpack](https://webpack.js.org/) bundling tools. Every page is written in its own module and is dynamically generated.<br>
 
+### Live: [click here](https://husky93.github.io/restaurant-page/)
+
 #### Features:
 - Dynamic page generation
 - Mobile first
 - Mobile menu
 - Automatic "Hero" slider
-
-##### Live: [click here](https://husky93.github.io/restaurant-page/)
 
 ![Webpage photo](https://github.com/husky93/restaurant-page/blob/main/restaurant-page.jpg?raw=true)
 
